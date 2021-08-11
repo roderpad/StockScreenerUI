@@ -4,7 +4,8 @@
 
 ## Description
 
-In this project, I've provided some examples of what I learned about the backtrader python package by following along with [Part Time Larry's](https://www.youtube.com/watch?v=UNkH1TQl7qo "Algorithmic Trading with Python and Backtrader") "Algorithmic Trading with Python and Backtrader" videos on youtube. The current project has two datasets (Oracle stock and S&P 500) and two trading strategies (Golden Cross and Buy & Hold for 5 days). 
+In this project, I've provided some examples of what I learned about the backtrader python package by following along with [Part Time Larry's](https://www.youtube.com/watch?v=5GorMC2lPpk "FastAPI Python Tutorial - Building a Stock Screener with FastAPI") "FastAPI Python Tutorial - Building a Stock Screener with FastAPI" videos on youtube. This project is currently IP. Stay tuned.
+<!---The current project has two datasets (Oracle stock and S&P 500) and two trading strategies (Golden Cross and Buy & Hold for 5 days). 
 
 ## Links
 
@@ -57,6 +58,7 @@ The number of stocks you wish to execute an order with.
 - Allow for input of date range arguments
 - Create more sophisticated buy options for placed orders
 
+--->
 ## Author
 
 **Paden Roder**
