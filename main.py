@@ -1,5 +1,8 @@
+import models
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
+from database import SessionLocal, engine
+from sqlalchemy.orm import Session
 #* Documentation can be found at localhost:8000/docs
 
 app = FastAPI()
@@ -9,6 +12,8 @@ app = FastAPI()
 #* We make the 'run' shell script an executable by typing 'chmod +x run' in the terminal.
 #* We then run the 'run' shell script by typing './run' in the terminal
 #* In the example below, can find output at 'localhost:8000/'
+
+models.Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 

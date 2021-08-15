@@ -5,27 +5,48 @@
 <!-- You can pass a variable per the below code.
 The value of somevar is {{somevar}}
 -->
+<div class="ui input">
+    <input type="text" placeholder="P/E Ratio">
+</div>
+
+<div class="ui input">
+    <input type="text" placeholder="Dividend Yield">
+</div>
+
+<div class="ui checkbox">
+    <input type="checkbox" name="example">
+    <label>Above 50 Day MA</label>
+</div>
+
+<div class="ui checkbox">
+    <input type="checkbox" name="example">
+    <label>Above 200 Day MA</label>
+</div>
+
+<button class="ui button primary">Filter</button> <!-- adding 'primary' makes the button blue-->
+
 <table class="ui celled table">
     <thead>
-      <tr><th>Name</th>
-      <th>Age</th>
-      <th>Job</th>
+      <tr>
+          <th>Symbol</th>
+      <th>P/E</th>
+      <th>Dividend Yield</th>
     </tr></thead>
     <tbody>
       <tr>
-        <td data-label="Name">James</td>
-        <td data-label="Age">24</td>
-        <td data-label="Job">Engineer</td>
+        <td data-label="Name">MSFT</td>
+        <td data-label="Age">10</td>
+        <td data-label="Job">2</td>
       </tr>
       <tr>
-        <td data-label="Name">Jill</td>
-        <td data-label="Age">26</td>
-        <td data-label="Job">Engineer</td>
+        <td data-label="Name">AAPL</td>
+        <td data-label="Age">44</td>
+        <td data-label="Job">3</td>
       </tr>
       <tr>
-        <td data-label="Name">Elyse</td>
-        <td data-label="Age">24</td>
-        <td data-label="Job">Designer</td>
+        <td data-label="Name">FB</td>
+        <td data-label="Age">20</td>
+        <td data-label="Job">0</td>
       </tr>
     </tbody>
   </table>
