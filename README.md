@@ -23,46 +23,61 @@ The database design is done using SQLAlchemy models. The database has one table 
 
 - [Bugs](https://github.com/roderpad/StockScreenerUI/issues "Issues Page")
 
-## Screenshots
+<!--## Screenshots
 
 ![Example Input](/screenshots/ProgramRun.png "Example Input")
 ![Example Output](/screenshots/Output.png "Example Output")
+-->
 
 ## How To Use
 
-An example of how to run this is: `python trader.py golden_cross SPY 5000 20`. This runs the backtest using the golden_cross strategy using S&P500 data starting with $5k and order sizes of 20 stocks.
+### `1) Install Packages`,
 
-The five arguments:
+Install required packages using `pip install -r requirements.txt`.
 
-### `strategy`,
+![Install Package Dependencies](/screenshots/PIPinstall.png "Install Packages")
 
-The type of strategy you want to backtest. Currently only `golden_cross` and `buy_hold5days` are accepted.
+### `2) Run App`,
 
-### `ticker`,
+Run the app by executing `./run` in the terminal.
 
-The stock ticker used to test your strategy on. Currently only `ORCL` and `SPY` are accepted.
+![Run App](/screenshots/RunApp.png "Run App")
 
-### `starting_cash`,
+### `3) Open App`,
 
-The amount of cash you want to start your backtest with.
+Open the app by going to `http://localhost:8000/` in your browser.
 
-### `order_size`,
+![Open App](/screenshots/OpenApp.png "Open App")
 
-The number of stocks you wish to execute an order with.
+### `4) Add Stock Tickers`,
+
+Click the `Add Stocks` button and then type in a list of stock ticker symbols. The app will then fetch up-to-date data on each ticker and insert into a local database `stocks.db`.
+
+![Add Tickers](/screenshots/AddStocks.png "Add Tickers")
+![View Table](/screenshots/ViewStocks.png "View Stocks")
+
+### `5) Screen Stocks`,
+
+Screen stocks from those in the database by using the filters for `price`, `forward price-to-earnings ratio`, `forward earnings-per-share ratio`, `dividend yield`,`50 day moving average`, and `200 day moving average`.
+
+![Screen Stocks](/screenshots/FilteredStocks.png "Screen Stocks")
 
 ## Built With
 
 - Python
-- Matplotlib
-- Backtrader
+- FastAPI
+- SemanticUI
+- Jinja2
+- SQLAlchemy
+- Pydantic
 
+<!--
 ## Future Updates
 
 - Get ticker and historical price data programmatically
 - Allow for input of date range arguments
 - Create more sophisticated buy options for placed orders
-
---->
+-->
 ## Author
 
 **Paden Roder**
