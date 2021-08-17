@@ -5,6 +5,9 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Ignore database, as it gets generated automatically
+stocks.db
+
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 **/.history
