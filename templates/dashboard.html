@@ -5,49 +5,108 @@
 <!-- You can pass a variable per the below code.
 The value of somevar is {{somevar}}
 -->
-<div class="ui input">
-    <input type="text" placeholder="P/E Ratio">
+
+<!-- Typically you would create a separate javascript file to create functions in,
+but we are doing one inline here as we don't have too much to worry about.-->
+<script>
+    $(document).ready(function() { // Wait for document to load. Once loaded, run below JS.
+      $("#add_stocks").click(function() { // Only show the modal dialogue once the "add_stock" button is clicked.
+          $('.ui.modal').modal('show'); // Show the modal dialogue.
+      })
+      $("#save").click(function() {
+          var symbols = $("#symbols").val();
+          //console.log(symbols); // Logs to browser console (in browser dev tools)
+          var stockSymbols = symbols.split("\n");
+          //console.log(stockSymbols); // Logs to browser console (in browser dev tools)
+          for (var i = 0; i < stockSymbols.length; i++) {
+            //console.log(stockSymbols[i]); // Logs to browser console (in browser dev tools)
+            $.ajax({
+              url: '/stock',
+              type: 'POST',
+              contentType: 'application/json',
+              data: JSON.stringify({"symbol": stockSymbols[i]}),
+              dataType: 'json'
+            })
+          }
+
+          $('.ui.modal').modal('hide');
+          window.location.reload();
+      })
+    });
+</script>
+
+<form>
+    <div class="ui input">
+        <input name="forward_pe" type="text" placeholder="P/E Ratio" value="{{ forward_pe or ''}}">
+    </div>
+
+    <div class="ui input">
+        <input name="dividend_yield" type="text" placeholder="Dividend Yield" value = "{{ dividend_yield or ''}}">
+    </div>
+
+    <div class="ui checkbox">
+        <input name="ma50" type="checkbox" {% if ma50 %}checked="checked"{% endif %}>
+        <label>Above 50 Day MA</label>
+    </div>
+
+    <div class="ui checkbox">
+        <input name="ma200" type="checkbox" {% if ma200 %}checked="checked"{% endif %}>
+        <label>Above 200 Day MA</label>
+    </div>
+
+    <button type="submit" class="ui button primary">Filter</button> <!-- adding 'primary' makes the button blue-->
+</form>
+
+<div>
+    <button id="add_stocks" class="ui button">Add Stocks</button>
 </div>
 
-<div class="ui input">
-    <input type="text" placeholder="Dividend Yield">
-</div>
-
-<div class="ui checkbox">
-    <input type="checkbox" name="example">
-    <label>Above 50 Day MA</label>
-</div>
-
-<div class="ui checkbox">
-    <input type="checkbox" name="example">
-    <label>Above 200 Day MA</label>
-</div>
-
-<button class="ui button primary">Filter</button> <!-- adding 'primary' makes the button blue-->
 
 <table class="ui celled table">
     <thead>
-      <tr>
-          <th>Symbol</th>
-      <th>P/E</th>
-      <th>Dividend Yield</th>
-    </tr></thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Forward P/E</th>
+            <th>Forward EPS</th>
+            <th>Dividend Yield</th>
+            <th>50 Day</th>
+            <th>200 Day</th>
+        </tr>
+    </thead>
     <tbody>
-      <tr>
-        <td data-label="Name">MSFT</td>
-        <td data-label="Age">10</td>
-        <td data-label="Job">2</td>
-      </tr>
-      <tr>
-        <td data-label="Name">AAPL</td>
-        <td data-label="Age">44</td>
-        <td data-label="Job">3</td>
-      </tr>
-      <tr>
-        <td data-label="Name">FB</td>
-        <td data-label="Age">20</td>
-        <td data-label="Job">0</td>
-      </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.forward_pe }}</td>
+            <td>{{ stock.forward_eps }}</td>
+            <td>{{ stock.dividend_yield }}</td>
+            <td>{{ stock.ma50 }}</td>
+            <td>{{ stock.ma200 }}</td>
+        </tr>
+        {% endfor %}
     </tbody>
-  </table>
+</table>
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Add Stock Symbol
+    </div>
+    <div class="content">
+        <div class="ui form">
+            <div class="field">
+                <label>Enter Stock Symbols</label>
+                <textarea id="symbols"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div id="save" class="ui positive right labeled icon button">
+            Add Symbols
+            <i class="plus icon"></i>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -4,20 +4,24 @@
 
 ## Description
 
-In this project, I've provided some examples of what I learned about the backtrader python package by following along with [Part Time Larry's](https://www.youtube.com/watch?v=5GorMC2lPpk "FastAPI Python Tutorial - Building a Stock Screener with FastAPI") "FastAPI Python Tutorial - Building a Stock Screener with FastAPI" videos on youtube. This project is currently IP. Stay tuned.
-<!---The current project has two datasets (Oracle stock and S&P 500) and two trading strategies (Golden Cross and Buy & Hold for 5 days). 
+In this project, I've created a stock screener web application using FastAPI (a new Python framework built on Starlette) by following along with [Part Time Larry's](https://www.youtube.com/watch?v=5GorMC2lPpk "FastAPI Python Tutorial - Building a Stock Screener with FastAPI") "FastAPI Python Tutorial - Building a Stock Screener with FastAPI" videos on youtube. The project utilizes many of the FastAPI features including pydantic models, dependency injection, background/async tasks, and SQLAlchemy integration. API endpoint testing was done using Insomnia API client. 
+
+### `UI Design`
+The frontend UI design is done using SemanticUI and Jinja2 templates, including CSS and JavaScript from the CDN.
+
+### `Database Design`
+The database design is done using SQLAlchemy models. The database has one table 'stocks.db' that holds stock data retrieved programmatically as a background task to prevent UI hang from yahoo finance (yfinance package). 
 
 ## Links
+- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/ "FastAPI Tutorial")
 
-- [Backtrader Quick Start](https://www.backtrader.com/docu/quickstart/quickstart/ "BT Quick Start")
+- [SemanticUI CDN](https://semantic-ui.com/introduction/advanced-usage.html#cdn-releases "SemanticUI CDN")
 
-- [ORCL Dataset](https://github.com/mementum/backtrader/blob/master/datas/orcl-1995-2014.txt "ORCL Dataset")
+- [Insomnia API client](https://insomnia.rest/ "Insomnia API client")
 
-- [Golden Cross/Death Cross](https://www.daytradetheworld.com/trading-blog/golden-cross/ "Golden Cross Strat")
+- [Repo](https://github.com/roderpad/StockScreenerUI "StockScreenerUI Repo")
 
-- [Repo](https://github.com/roderpad/BacktraderPlayground "BacktraderPlayground Repo")
-
-- [Bugs](https://github.com/roderpad/BacktraderPlayground/issues "Issues Page")
+- [Bugs](https://github.com/roderpad/StockScreenerUI/issues "Issues Page")
 
 ## Screenshots
 
